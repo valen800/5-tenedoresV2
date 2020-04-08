@@ -9,8 +9,6 @@ import {
 } from "react-native";
 import { Image } from "react-native-elements";
 import * as firebase from "firebase";
-import { firebaseApp } from "../../utils/FireBase";
-import { add } from "react-native-reanimated";
 
 export default function ListRestaurants(props) {
   const { restaurants, isLoading, handleLoadMore, navigation } = props;
@@ -19,12 +17,12 @@ export default function ListRestaurants(props) {
       {restaurants ? (
         <FlatList
           data={restaurants}
-          renderItem={(restaurant) => (
+          renderItem={restaurant => (
             <Restaurant restaurant={restaurant} navigation={navigation} />
           )}
           keyExtractor={(item, index) => index.toString()} //Cuando llegue al final de la lista me pida los siguientes 8 items
           onEndReached={handleLoadMore}
-          onEndReachedThreshold={0} //Cuando tiene que pedir los 8 items, 0 al final
+          onEndReachedThreshold={0.5} //Cuando tiene que pedir los 8 items, 0 al final
           ListFooterComponent={<FooterList isLoading={isLoading} />}
         />
       ) : (
@@ -48,7 +46,7 @@ function Restaurant(props) {
       .storage()
       .ref(`restaurant-images/${image}`)
       .getDownloadURL()
-      .then((result) => {
+      .then(result => {
         setImageRestaurant(result);
       });
   });
@@ -90,11 +88,12 @@ function FooterList(props) {
   } else {
     return (
       <View style={styles.notFoundRestaurants}>
-        <Text>No quedan restaurantes por cargar...</Text>
+        <Text>No quedan restaurantes por cargar</Text>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   loadingRestaurants: {

@@ -29,7 +29,6 @@ export default function Restaurant(props) {
 
   return (
     <View>
-      <Text>Página del restaurante.</Text>
       <CarouselImages
         arrayImages={imagesRestaurant}
         width={screenWidth}

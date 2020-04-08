@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ActionButton from "react-native-action-button";
-
 import ListRestaurants from "../../components/Restaurants/ListRestaurants";
 
-import * as firebase from "firebase/app";
 import { firebaseApp } from "../../utils/FireBase";
+import firebase from "firebase/app";
 import "firebase/firestore";
 const db = firebase.firestore(firebaseApp);
 
@@ -17,11 +16,11 @@ export default function Restaurants(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [totalRestaurants, setTotalRestaurants] = useState(0);
   const [isReloadRestaurants, setIsReloadRestaurants] = useState(false);
-  const LIMITRESTAURANTS = 8;
+  const limitRestaurants = 12;
 
   //Si estamos logueado obtenemos la información del usuario
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((userInfo) => {
+    firebase.auth().onAuthStateChanged(userInfo => {
       setUser(userInfo);
     });
   }, []);
@@ -40,10 +39,10 @@ export default function Restaurants(props) {
       const restaurants = db
         .collection("restaurants")
         .orderBy("createAt", "desc")
-        .limit(LIMITRESTAURANTS);
+        .limit(limitRestaurants);
 
       await restaurants.get().then(response => {
-        setStartRestaurants(response.docs[response.docs.lenght - 1]);
+        setStartRestaurants(response.docs[response.docs.length - 1]);
 
         response.forEach(doc => {
           let restaurant = doc.data();
@@ -60,15 +59,15 @@ export default function Restaurants(props) {
     const resultRestaurants = [];
     restaurants.length < totalRestaurants && setIsLoading(true);
 
-    const restaurantsDB = db
+    const restaurantsDb = db
       .collection("restaurants")
       .orderBy("createAt", "desc")
       .startAfter(startRestaurants.data().createAt)
-      .limit(LIMITRESTAURANTS);
+      .limit(limitRestaurants);
 
-    await restaurantsDB.get().then(response => {
+    await restaurantsDb.get().then(response => {
       if (response.docs.length > 0) {
-        setStartRestaurants[response.docs.length - 1];
+        setStartRestaurants(response.docs[response.docs.length - 1]);
       } else {
         setIsLoading(false);
       }
@@ -82,6 +81,7 @@ export default function Restaurants(props) {
       setRestaurants([...restaurants, ...resultRestaurants]);
     });
   };
+
 
   return (
     <View style={styles.viewBody}>
