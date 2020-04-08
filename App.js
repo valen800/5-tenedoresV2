@@ -19,7 +19,8 @@ console.warn = (message) => {
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
   'Warning: componentWillReceiveProps is deprecated',
-  'Warning: componentWillReceiveProps has been renamed'
+  'Warning: componentWillReceiveProps has been renamed',
+  'Warning: componentWillReceiveProps has been renamed, and is not recommended for use'
 ]);
 
 //Error variable atob and crypto

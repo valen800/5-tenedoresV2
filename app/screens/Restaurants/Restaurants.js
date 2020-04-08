@@ -30,7 +30,7 @@ export default function Restaurants(props) {
   useEffect(() => {
     db.collection("restaurants")
       .get()
-      .then((snap) => {
+      .then(snap => {
         setTotalRestaurants(snap.size);
       });
 
@@ -42,10 +42,10 @@ export default function Restaurants(props) {
         .orderBy("createAt", "desc")
         .limit(LIMITRESTAURANTS);
 
-      await restaurants.get().then((response) => {
+      await restaurants.get().then(response => {
         setStartRestaurants(response.docs[response.docs.lenght - 1]);
 
-        response.forEach((doc) => {
+        response.forEach(doc => {
           let restaurant = doc.data();
           restaurant.id = doc.id;
           resultRestaurants.push({ restaurant });
@@ -66,14 +66,14 @@ export default function Restaurants(props) {
       .startAfter(startRestaurants.data().createAt)
       .limit(LIMITRESTAURANTS);
 
-    await restaurantsDB.get().then((response) => {
+    await restaurantsDB.get().then(response => {
       if (response.docs.length > 0) {
-        setStartRestaurants(response.docs.length - 1);
+        setStartRestaurants[response.docs.length - 1];
       } else {
         setIsLoading(false);
       }
 
-      response.forEach((doc) => {
+      response.forEach(doc => {
         let restaurant = doc.data();
         restaurant.id = doc.id;
         resultRestaurants.push({ restaurant });

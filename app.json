@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Create restaurant (error cant find variable crypto)",
+    "name": "Restaurant ScreenV2",
     "slug": "5-tenedores",
     "privacy": "public",
     "platforms": [
@@ -31,7 +31,7 @@
         "LOCATION"
       ]
     },
-    "description": "Create restaurant (error cant find variable crypto)",
+    "description": "Restaurant Screen implemented V2",
     "githubUrl": "https://github.com/valen800/5-tenedores.git"
   }
 }
