@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Restaurant ScreenV2",
+    "name": "5-tenedores",
     "slug": "5-tenedores",
     "privacy": "public",
     "platforms": [
@@ -31,7 +31,7 @@
         "LOCATION"
       ]
     },
-    "description": "Restaurant Screen implemented V2",
+    "description": "Comments implemented",
     "githubUrl": "https://github.com/valen800/5-tenedores.git"
   }
 }

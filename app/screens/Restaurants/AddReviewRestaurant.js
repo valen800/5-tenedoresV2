@@ -11,7 +11,7 @@ const db = firebase.firestore(firebaseApp)
 
 export default function AddReviewRestaurant(props) {
     const { navigation } = props;
-    const { idRestaurant } = navigation.state.params
+    const { idRestaurant, setReviewsReload } = navigation.state.params
     const [rating, setRating] = useState(null);
     const [title, setTitle] = useState("");
     const [review, setReview] = useState("");
@@ -65,6 +65,7 @@ export default function AddReviewRestaurant(props) {
                 quantityVoting
             }).then(() => {
                 setIsLoading(false)
+                setReviewsReload(true)
                 navigation.goBack();
             }).catch(() => {
                 setIsLoading(false)
