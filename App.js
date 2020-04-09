@@ -15,12 +15,12 @@ console.warn = (message) => {
   }
 };
 
-//Ignore Warnings
+//Ignore Warnings deprecateds
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
+  'Warning: componentWillUpdate is deprecated',
   'Warning: componentWillReceiveProps is deprecated',
-  'Warning: componentWillReceiveProps has been renamed',
-  'Warning: componentWillReceiveProps has been renamed, and is not recommended for use'
+  'VirtualizedLists should never be nested'
 ]);
 
 //Error variable atob and crypto

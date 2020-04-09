@@ -8,6 +8,8 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 const db = firebase.firestore(firebaseApp);
 
+import { YellowBox } from "react-native";
+
 export default function Restaurants(props) {
   const { navigation } = props;
   const [user, setUser] = useState(null);

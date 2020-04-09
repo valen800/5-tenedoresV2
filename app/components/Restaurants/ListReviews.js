@@ -11,6 +11,11 @@ export default function ListReviews(props) {
     const { navigation, idRestaurant, setRating } = props;
     const [reviews, setReviews] = useState([]);
     const [reviewsReload, setReviewsReload] = useState(false);
+    const [userLogged, setUserLogged] = useState(false);
+
+    firebase.auth().onAuthStateChanged(user => {
+        user ? setUserLogged(true) : setUserLogged(false)
+    })
 
     useEffect(() => {
         (async () => {
@@ -39,7 +44,8 @@ export default function ListReviews(props) {
 
     return (
         <View>
-            <Button
+            {userLogged ? (
+                <Button
                 buttonStyle={styles.btnReview}
                 titleStyle={styles.btnTitleAddReview}
                 title="Escribir una opinión"
@@ -53,6 +59,18 @@ export default function ListReviews(props) {
                     setReviewsReload: setReviewsReload
                 })}
             />
+            ) : (
+                <View style={{ flex: 1}}>
+                    <Text 
+                    style={{ textAlign: "center", color: "#00a680", padding: 20 }}
+                    onPress={() => navigation.navigate("Login")}>
+                        Para escribir comentarios es necesario iniciar sesión. {"  "}
+                        <Text style={{ fontWeight: "bold" }}>
+                            Pulsa aquí para iniciar sesión
+                        </Text>
+                    </Text>
+                </View>
+            )}
             <FlatList 
                 data={reviews}
                 renderItem={review => <Review review={review} />}
@@ -76,6 +94,21 @@ function Review(props) {
                          uri: avatarUser ? avatarUser : "https://api.adorable.io/avatars/285/abott@adorable.png" 
                     }}
                 />
+            </View>
+            <View style={styles.viewInfo}>
+                <Text style={styles.reviewTitle}>{title}</Text>
+                <Text style={styles.reviewText}>{review}</Text>
+                <Rating imageSize={15} startingValue={rating} readonly/>
+                <Text style={styles.reviewDate}>
+                    { formatDateReview.getDate() < 10 ? "0" : ""}
+                    { formatDateReview.getDate() } / 
+                    {(formatDateReview.getMonth() + 1) < 10 ? "0" : ""}
+                    {formatDateReview.getMonth() + 1} / 
+                    {formatDateReview.getFullYear()} - 
+                    {formatDateReview.getHours()}:
+                    {formatDateReview.getMinutes() < 10 ? "0" : ""}
+                    {formatDateReview.getMinutes()}
+                </Text>
             </View>
         </View>
     );
@@ -101,5 +134,25 @@ const styles = StyleSheet.create({
     imageAvatarUser: {
         width: 50,
         height: 50
+    },
+    viewInfo:{
+        flex: 1,
+        alignItems: "flex-start"
+    },
+    reviewTitle: {
+        fontWeight: "bold"
+    },
+    reviewText: {
+        paddingTop: 2,
+        color: "grey",
+        marginBottom: 5
+    },
+    reviewDate: {
+        marginTop: 5,
+        color: "grey",
+        fontSize: 12,
+        position: "absolute",
+        right: 0,
+        bottom: 0
     }
 }) 
