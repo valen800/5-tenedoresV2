@@ -42,6 +42,7 @@ function Restaurant(props) {
 
   useEffect(() => {
     const image = images[0];
+
     firebase
       .storage()
       .ref(`restaurant-images/${image}`)
@@ -49,11 +50,11 @@ function Restaurant(props) {
       .then(result => {
         setImageRestaurant(result);
       });
-  });
+  }, []);
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Restaurant", { restaurant })}
+      onPress={() => navigation.navigate("Restaurant", { restaurant: restaurant.item.restaurant })}
     >
       <View style={styles.viewRestaurant}>
         <View style={styles.viewRestaurantImage}>

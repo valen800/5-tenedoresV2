@@ -21,7 +21,7 @@ const RestaurantsScreenStacks = createStackNavigator({
     //Recibe los mismos props que en la clase Restaurant.js
     screen: RestaurantScreen,
     navigationOptions: (props) => ({
-      title: props.navigation.state.params.restaurant.item.restaurant.name,
+      title: props.navigation.state.params.restaurant.name,
     }),
   },
   AddReviewRestaurant: {
