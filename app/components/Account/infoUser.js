@@ -13,7 +13,7 @@ export default function infoUser(props) {
     setReloadData,
     toastRef,
     setIsLoading,
-    setTextLoading
+    setTextLoading,
   } = props;
 
   const changeAvatar = async () => {
@@ -25,7 +25,7 @@ export default function infoUser(props) {
     } else {
       const result = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
-        aspect: [4, 3]
+        aspect: [4, 3],
       });
 
       if (result.cancelled) {
@@ -45,21 +45,18 @@ export default function infoUser(props) {
     const response = await fetch(uri);
     const blob = await response.blob();
 
-    const ref = firebase
-      .storage()
-      .ref()
-      .child(`avatar/${nameImage}`);
+    const ref = firebase.storage().ref().child(`avatar/${nameImage}`);
     return ref.put(blob);
   };
 
-  const updatePhotoURL = uid => {
+  const updatePhotoURL = (uid) => {
     firebase
       .storage()
       .ref(`avatar/${uid}`)
       .getDownloadURL()
-      .then(async result => {
+      .then(async (result) => {
         const update = {
-          photoURL: result
+          photoURL: result,
         };
         await firebase.auth().currentUser.updateProfile(update);
         setReloadData(true);
@@ -81,7 +78,7 @@ export default function infoUser(props) {
         source={{
           uri: photoURL
             ? photoURL
-            : "https://api.adorable.io/avatars/260/abott@adorable.png"
+            : "https://api.adorable.io/avatars/260/abott@adorable.png",
         }}
       />
       <View>
@@ -101,12 +98,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#f2f2f2",
     paddingTop: 30,
-    paddingBottom: 30
+    paddingBottom: 30,
   },
   userInfoAvatar: {
-    marginRight: 20
+    marginRight: 20,
   },
   displayName: {
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });

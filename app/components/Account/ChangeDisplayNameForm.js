@@ -16,7 +16,7 @@ export default function ChangeDisplayNameForm(props) {
     } else {
       setIsLoading(true);
       const update = {
-        displayName: newDisplayName
+        displayName: newDisplayName,
       };
       firebase
         .auth()
@@ -40,11 +40,11 @@ export default function ChangeDisplayNameForm(props) {
         placeholder="Nombre"
         containerStyle={styles.input}
         defaultValue={displayName && displayName}
-        onChange={n => setnewDisplayName(n.nativeEvent.text)}
+        onChange={(n) => setnewDisplayName(n.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: "account-circle-outline",
-          color: "#c2c2c2"
+          color: "#c2c2c2",
         }}
         errorMessage={error}
       />
@@ -63,16 +63,16 @@ const styles = StyleSheet.create({
   view: {
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   input: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   btnContainer: {
     marginTop: 20,
-    width: "95%"
+    width: "95%",
   },
   btn: {
-    backgroundColor: "#00a680"
-  }
+    backgroundColor: "#00a680",
+  },
 });

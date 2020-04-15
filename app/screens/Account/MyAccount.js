@@ -9,7 +9,7 @@ export default function MyAccount() {
   const [login, setLogin] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       // if user is null or false set false : oppsite set true
       !user ? setLogin(false) : setLogin(true);
     });

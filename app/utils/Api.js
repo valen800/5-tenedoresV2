@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-export const reauthenticate = password => {
+export const reauthenticate = (password) => {
   const user = firebase.auth().currentUser;
   const credentials = firebase.auth.EmailAuthProvider.credential(
     user.email,

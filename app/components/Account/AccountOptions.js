@@ -19,7 +19,7 @@ export default function AccountOptions(props) {
       iconColorLeft: "#ccc",
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
-      onPress: () => selectedComponent("displayName")
+      onPress: () => selectedComponent("displayName"),
     },
     {
       title: "Cambiar Email",
@@ -28,7 +28,7 @@ export default function AccountOptions(props) {
       iconColorLeft: "#ccc",
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
-      onPress: () => selectedComponent("email")
+      onPress: () => selectedComponent("email"),
     },
     {
       title: "Cambiar Contraseña",
@@ -37,11 +37,11 @@ export default function AccountOptions(props) {
       iconColorLeft: "#ccc",
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
-      onPress: () => selectedComponent("password")
-    }
+      onPress: () => selectedComponent("password"),
+    },
   ];
 
-  const selectedComponent = key => {
+  const selectedComponent = (key) => {
     switch (key) {
       case "displayName":
         setRenderComponent(
@@ -89,12 +89,12 @@ export default function AccountOptions(props) {
           leftIcon={{
             type: menu.iconType,
             name: menu.iconNameLeft,
-            color: menu.iconColorLeft
+            color: menu.iconColorLeft,
           }}
           rightIcon={{
             type: menu.iconType,
             name: menu.iconNameRight,
-            color: menu.iconColorRight
+            color: menu.iconColorRight,
           }}
           onPress={menu.onPress}
           containerStyle={styles.MenuItem}
@@ -113,6 +113,6 @@ export default function AccountOptions(props) {
 const styles = StyleSheet.create({
   MenuItem: {
     borderBottomWidth: 1,
-    borderBottomColor: "#e3e3e3"
-  }
+    borderBottomColor: "#e3e3e3",
+  },
 });

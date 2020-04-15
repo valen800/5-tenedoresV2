@@ -31,7 +31,7 @@ export default function ChangePasswordForm(props) {
       if (newPassword !== newPasswordRepeat) {
         setError({
           newPassword: "Las nuevas contraseñas tienen que ser iguales",
-          newPasswordRepeat: "Las nuevas contraseñas tienen que ser iguales"
+          newPasswordRepeat: "Las nuevas contraseñas tienen que ser iguales",
         });
       } else {
         setIsLoading(true);
@@ -66,12 +66,12 @@ export default function ChangePasswordForm(props) {
         containerStyle={styles.input}
         password={true}
         secureTextEntry={hidePassword}
-        onChange={e => setPassword(e.nativeEvent.text)}
+        onChange={(e) => setPassword(e.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: hidePassword ? "eye-outline" : "eye-off-outline",
           color: "#c2c2c2",
-          onPress: () => sethidePassword(!hidePassword)
+          onPress: () => sethidePassword(!hidePassword),
         }}
         errorMessage={error.password}
       />
@@ -80,12 +80,12 @@ export default function ChangePasswordForm(props) {
         containerStyle={styles.input}
         password={true}
         secureTextEntry={hideNewPassword}
-        onChange={e => setnewPassword(e.nativeEvent.text)}
+        onChange={(e) => setnewPassword(e.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: hideNewPassword ? "eye-outline" : "eye-off-outline",
           color: "#c2c2c2",
-          onPress: () => sethideNewPassword(!hideNewPassword)
+          onPress: () => sethideNewPassword(!hideNewPassword),
         }}
         errorMessage={error.newPassword}
       />
@@ -94,12 +94,12 @@ export default function ChangePasswordForm(props) {
         containerStyle={styles.input}
         password={true}
         secureTextEntry={hideNewPasswordRepeat}
-        onChange={e => setnewPasswordRepeat(e.nativeEvent.text)}
+        onChange={(e) => setnewPasswordRepeat(e.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: hideNewPasswordRepeat ? "eye-outline" : "eye-off-outline",
           color: "#c2c2c2",
-          onPress: () => sethideNewPassowrdRepeat(!hideNewPasswordRepeat)
+          onPress: () => sethideNewPassowrdRepeat(!hideNewPasswordRepeat),
         }}
         errorMessage={error.newPasswordRepeat}
       />
@@ -119,17 +119,17 @@ const styles = StyleSheet.create({
   view: {
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   input: {
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
   },
   btnContainer: {
     marginTop: 20,
-    width: "95%"
+    width: "95%",
   },
   btn: {
-    backgroundColor: "#00a680"
-  }
+    backgroundColor: "#00a680",
+  },
 });

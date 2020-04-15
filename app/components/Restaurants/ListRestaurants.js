@@ -17,7 +17,7 @@ export default function ListRestaurants(props) {
       {restaurants ? (
         <FlatList
           data={restaurants}
-          renderItem={restaurant => (
+          renderItem={(restaurant) => (
             <Restaurant restaurant={restaurant} navigation={navigation} />
           )}
           keyExtractor={(item, index) => index.toString()} //Cuando llegue al final de la lista me pida los siguientes 8 items
@@ -47,14 +47,18 @@ function Restaurant(props) {
       .storage()
       .ref(`restaurant-images/${image}`)
       .getDownloadURL()
-      .then(result => {
+      .then((result) => {
         setImageRestaurant(result);
       });
   }, []);
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Restaurant", { restaurant: restaurant.item.restaurant })}
+      onPress={() =>
+        navigation.navigate("Restaurant", {
+          restaurant: restaurant.item.restaurant,
+        })
+      }
     >
       <View style={styles.viewRestaurant}>
         <View style={styles.viewRestaurantImage}>
@@ -94,7 +98,6 @@ function FooterList(props) {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   loadingRestaurants: {

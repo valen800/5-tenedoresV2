@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import ActionButton from 'react-native-action-button';
+import ActionButton from "react-native-action-button";
 import ListRestaurants from "../../components/Restaurants/ListRestaurants";
 
 import { firebaseApp } from "../../utils/FireBase";
@@ -22,7 +22,7 @@ export default function Restaurants(props) {
 
   //Si estamos logueado obtenemos la información del usuario
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(userInfo => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
       setUser(userInfo);
     });
   }, []);
@@ -31,7 +31,7 @@ export default function Restaurants(props) {
   useEffect(() => {
     db.collection("restaurants")
       .get()
-      .then(snap => {
+      .then((snap) => {
         setTotalRestaurants(snap.size);
       });
 
@@ -43,10 +43,10 @@ export default function Restaurants(props) {
         .orderBy("createAt", "desc")
         .limit(limitRestaurants);
 
-      await restaurants.get().then(response => {
+      await restaurants.get().then((response) => {
         setStartRestaurants(response.docs[response.docs.length - 1]);
 
-        response.forEach(doc => {
+        response.forEach((doc) => {
           let restaurant = doc.data();
           restaurant.id = doc.id;
           resultRestaurants.push({ restaurant });
@@ -67,14 +67,14 @@ export default function Restaurants(props) {
       .startAfter(startRestaurants.data().createAt)
       .limit(limitRestaurants);
 
-    await restaurantsDb.get().then(response => {
+    await restaurantsDb.get().then((response) => {
       if (response.docs.length > 0) {
         setStartRestaurants(response.docs[response.docs.length - 1]);
       } else {
         setIsLoading(false);
       }
 
-      response.forEach(doc => {
+      response.forEach((doc) => {
         let restaurant = doc.data();
         restaurant.id = doc.id;
         resultRestaurants.push({ restaurant });
@@ -83,7 +83,6 @@ export default function Restaurants(props) {
       setRestaurants([...restaurants, ...resultRestaurants]);
     });
   };
-
 
   return (
     <View style={styles.viewBody}>

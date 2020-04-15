@@ -48,11 +48,11 @@ export default function ChangeEmailForm(props) {
         placeholder="Correo electrónico"
         containerStyle={styles.input}
         defaultValue={email && email}
-        onChange={e => setNewEmail(e.nativeEvent.text)}
+        onChange={(e) => setNewEmail(e.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: "at",
-          color: "#c2c2c2"
+          color: "#c2c2c2",
         }}
         errorMessage={error.email}
       />
@@ -61,12 +61,12 @@ export default function ChangeEmailForm(props) {
         containerStyle={styles.input}
         password={true}
         secureTextEntry={hidePassword}
-        onChange={e => setPassword(e.nativeEvent.text)}
+        onChange={(e) => setPassword(e.nativeEvent.text)}
         rightIcon={{
           type: "material-community",
           name: hidePassword ? "eye-outline" : "eye-off-outline",
           color: "#c2c2c2",
-          onPress: () => sethidePassword(!hidePassword)
+          onPress: () => sethidePassword(!hidePassword),
         }}
         errorMessage={error.password}
       />
@@ -87,17 +87,17 @@ const styles = StyleSheet.create({
   view: {
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   input: {
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
   },
   btnContainer: {
     marginTop: 20,
-    width: "95%"
+    width: "95%",
   },
   btn: {
-    backgroundColor: "#00a680"
-  }
+    backgroundColor: "#00a680",
+  },
 });
