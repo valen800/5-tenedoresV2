@@ -3,33 +3,24 @@
     "name": "5-tenedores",
     "slug": "5-tenedores",
     "privacy": "public",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00a680"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "permissions": [
-        "CAMERA_ROLL",
-        "LOCATION"
-      ]
+      "permissions": ["CAMERA_ROLL", "LOCATION"]
     },
     "description": "Comments implemented and Validation user with comments",
     "githubUrl": "https://github.com/valen800/5-tenedores.git"
